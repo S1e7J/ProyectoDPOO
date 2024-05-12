@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import model.inventario.Pieza;
 import model.usuarios.CompradorPropietario;
+import model.errores.*;
 
 public class Subasta {
 	private Map<String, Pieza> piezasDisponibles;
@@ -68,7 +69,7 @@ public class Subasta {
 	public Oferta getMaximaOferta(String idPieza) throws Exception {
 		List<Oferta> ofertas = this.ofertasPorPieza.get(idPieza);
 		if (ofertas.size() == 0) {
-			throw new Exception("No hay ofertas para vender");
+			throw new ExceptionOfertas(idPieza, ExceptionsEnOfertas.NoHayOfertas);
 		}
 		Oferta maxOferta = ofertas.get(0);
 		for (int i = 0; i < ofertas.size(); i++) {
@@ -77,11 +78,12 @@ public class Subasta {
 		return maxOferta;
 	}
 	public void venderPieza(String idPieza) throws Exception {
+		Pieza pieza = this.piezasDisponibles.get(idPieza);
 		Oferta maxOferta = null;
-		try {
-			maxOferta = this.getMaximaOferta(idPieza);
-		} catch (Exception e) {
-			throw e;
+		try { maxOferta = this.getMaximaOferta(idPieza); } 
+		catch (Exception e) { throw e; }
+		if (maxOferta.getDinero() < pieza.getPrecioMinimo()) {
+			throw new ExceptionOfertas(idPieza, ExceptionsEnOfertas.OfertaMenorValorMinimo);
 		}
 		this.obrasVendidas.put(idPieza, maxOferta);
 	}
