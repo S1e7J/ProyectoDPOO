@@ -2,6 +2,7 @@ package model.inventario;
 
 import java.util.List;
 
+import model.subastas.Oferta;
 import model.usuarios.CompradorPropietario;
 
 public class Pieza {
@@ -10,6 +11,8 @@ public class Pieza {
 	private int precioMinimo;
 	private int precioInicial;
 	private CompradorPropietario propietario;
+	private List<CompradorPropietario> historialPropietarios;
+	private List<Oferta> historialOfertas;
 	
 	public Pieza(String idPieza, boolean disponibleVentaFija, int precioMinimo, int precioInicial,
 			CompradorPropietario propietario) {
@@ -21,15 +24,6 @@ public class Pieza {
 		this.propietario = propietario;
 	}
 	
-	public Pieza(String idPieza) {
-		super();
-		this.idPieza = idPieza;
-		this.disponibleVentaFija = true;
-		this.precioMinimo = 10;
-		this.precioInicial = 100;
-		this.propietario = new CompradorPropietario();
-	}
-
 	public boolean getDisponibleVentaFija() {
 		return this.disponibleVentaFija;
 	}
@@ -69,5 +63,17 @@ public class Pieza {
 	public void setPropietario(CompradorPropietario propietario) {
 		this.propietario = propietario;
 	}
-
+	
+	public void cambiarPropietario(CompradorPropietario nuevoPropietario) {
+		this.historialPropietarios.add(nuevoPropietario);
+		this.setPropietario(nuevoPropietario);
+	}
+	
+	public void venderPieza(CompradorPropietario nuevoPropietario) {
+		this.propietario.removerPieza(this);
+		this.cambiarPropietario(nuevoPropietario);
+	}
+	
+	public void venderPieza(Oferta oferta) {
+	}
 }
