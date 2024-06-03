@@ -10,11 +10,19 @@ public class Oferta {
 	private CompradorPropietario ofertante;
 	private Date fecha;
 	private Pieza pieza;
-	
+
+	public Oferta(int dinero, CompradorPropietario ofertante, Date fecha, Pieza pieza) {
+		super();
+		this.dinero = dinero;
+		this.ofertante = ofertante;
+		this.fecha = fecha;
+		this.pieza = pieza;
+	}
+
 	public int getDinero() {
 		return this.dinero;
 	}
-	
+
 	public Date getFecha() {
 		return fecha;
 	}

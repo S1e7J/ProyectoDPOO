@@ -4,6 +4,7 @@ import java.util.List;
 
 import model.inventario.InventarioGeneral;
 import model.inventario.Pieza;
+import model.subastas.Subasta;
 import model.usuarios.CompradorPropietario;
 import model.usuarios.TipoUsuario;
 import model.usuarios.Usuario;
@@ -28,5 +29,21 @@ public class GaleriaGeneral {
 	public Pieza crearPieza(String idPieza, boolean disponibleVentaFija, int precioMinimo, int precioInicial,
 			CompradorPropietario propietario) {
 		return inventario.crearPieza(idPieza, disponibleVentaFija, precioMinimo, precioInicial, propietario);
+	}
+	
+	public List<CompradorPropietario> conseguirCompradorPropietario() {
+		return usuarios.conseguirCompradorPropietario();
+	}
+	
+	public CompradorPropietario encontrarCompradorPropietario(String idUsuario) {
+		return (CompradorPropietario) usuarios.encontrarUsuario(TipoUsuario.CompradorPropieatrio, idUsuario);
+	}
+
+	public Subasta crearSubasta() {
+		return new Subasta(conseguirPiezas(), conseguirCompradorPropietario());
+	}
+
+	public Pieza encontrarPieza(String text) {
+		return GaleriaGeneral.inventario.encontraPiezaActual(text);
 	}
 }

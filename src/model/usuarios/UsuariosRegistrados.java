@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class UsuariosRegistrados {
 	private Map<TipoUsuario, List<Usuario>> usuarios;
@@ -41,6 +42,16 @@ public class UsuariosRegistrados {
 		return null;
 	}
 	
+	public Usuario encontrarUsuario(TipoUsuario tipo, String idUsuario) {
+		List<Usuario> usuariosDelTipo = this.usuarios.get(tipo);
+		for (Usuario us : usuariosDelTipo) {
+			if (us.getIdUsuario().equals(idUsuario)) {
+				return us;
+			}
+		}
+		return null;
+	}
+	
 	public Usuario crearUsuario(TipoUsuario tipo, String idUsuario, String contrasena) {
 		Usuario us = null;
 		switch (tipo) {
@@ -64,4 +75,12 @@ public class UsuariosRegistrados {
 		this.usuarios.get(tipo).add(us);
 		return us;
 	}
+
+	public List<CompradorPropietario> conseguirCompradorPropietario() {
+		// Viva la programación funcional. Es demasiado bella.
+		return this.usuarios.get(TipoUsuario.CompradorPropieatrio).stream().map((a) -> {
+			return (CompradorPropietario) a;
+		}).collect(Collectors.toList());
+	}
+	
 }

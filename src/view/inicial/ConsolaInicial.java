@@ -30,6 +30,7 @@ public class ConsolaInicial extends Consola {
 		CompradorPropietario comprador2 = (CompradorPropietario) super.galeria.crearUsuario(TipoUsuario.CompradorPropieatrio, "Comprador/Propietario", "123");
 		Usuario cajero = super.galeria.crearUsuario(TipoUsuario.Cajero, "Cajero", "123");
 		Usuario operador = super.galeria.crearUsuario(TipoUsuario.Operador, "Operador", "123");
+		Usuario operador2 = super.galeria.crearUsuario(TipoUsuario.Operador, "asdf", "asdf");
 		super.galeria.crearPieza("1", true, 10, 10, comprador);
 		super.galeria.crearPieza("2", true, 11, 11, comprador2);
 		super.galeria.crearPieza("3", true, 12, 12, comprador);

@@ -19,4 +19,16 @@ public class Operador extends Usuario {
 		super(TipoUsuario.Operador, idUsuario, pass);
 		subastasRealizadas = new ArrayList<Subasta>();
 	}
+	public Subasta getSubastaActual() {
+		return subastaActual;
+	}
+	public void setSubastaActual(Subasta subastaActual) {
+		this.subastaActual = subastaActual;
+	}
+	public List<Subasta> getSubastasRealizadas() {
+		return subastasRealizadas;
+	}
+	public void setSubastasRealizadas(List<Subasta> subastasRealizadas) {
+		this.subastasRealizadas = subastasRealizadas;
+	}
 }
