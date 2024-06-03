@@ -11,6 +11,10 @@ public class ConsolaCompradorPropietario extends ConsolaUsuario {
 		super(galeria);
 		this.us = (CompradorPropietario) user;
 		this.galeria = galeria;
-		galeria.crearPieza("1", true, 0, 0, us);
+		this.agregarDescripcion();
+	}
+	@Override
+	public String conseguirDescripcionUsuario() {
+		return "Identificador: " + us.getIdUsuario() + " Rol " + us.getTipo().toString();
 	}
 }

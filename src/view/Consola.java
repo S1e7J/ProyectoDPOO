@@ -12,6 +12,7 @@ public abstract class Consola extends JFrame {
 
 	public Consola() {
 		super();
+		this.setTitle("Proyecto DPOO");
 		this.galeria = new GaleriaGeneral();
 		this.setSize(700, 700);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

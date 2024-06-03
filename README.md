@@ -1,2 +1,3 @@
-# ProyectoDPOO
-Proyecto DPOO
+# Proyecto DPOO
+
+Entrega individual de _Sergio Montoya_. En la realización tuvimos varios inconvenientes por lo tanto este trabajo fue realizado de manera individual y sin usar mas codigo que el realizado por mi en el span de una semana. Se que parte de lo que se califica en el curso es trabajo en grupo sin embargo las diferencias y el hecho de que fui algo irresponsable conllevaron a que no pudieramos encontrar esta solución. Como muestra de que el trabajo en grupo no es algo que me cueste adjunto este [link](https://www.linkedin.com/in/sergio-montoya-775199301/) a mi LinkedIn donde se muestra que ejerzo cargos que conllevan trabajo en equipo. Disculpen las molestias.
